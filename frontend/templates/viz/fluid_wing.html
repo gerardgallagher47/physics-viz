@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wing & Lift — Fluid Mechanics</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/lesson.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Wing & Lift — Bernoulli on an airfoil</h1>
+    <p>Faster air over the top, slower underneath: the pressure difference becomes lift. See it scale with speed.</p>
+  </div>
+</header>
+
+<nav class="lz-nav">
+  <a class="lz-step" href="/viz/fluid-bernoulli"><span class="num">1</span> Bernoulli's Principle</a>
+  <span class="lz-arrow">→</span>
+  <a class="lz-step" href="/viz/fluid-venturi"><span class="num">2</span> Venturi Effect</a>
+  <span class="lz-arrow">→</span>
+  <a class="lz-step current" href="/viz/fluid-wing"><span class="num">3</span> Wing & Lift</a>
+</nav>
+
+<div class="lz-layout">
+  <section class="lz-diagram">
+    <svg id="lz-svg" viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Airfoil with pressure field, streamlines, and lift and drag arrows"></svg>
+  </section>
+  <aside class="lz-sidebar">
+    <div class="panel">
+      <p class="panel-title">Controls</p>
+      <div class="slider-row"><div class="slider-label"><span>Free-stream V∞</span><span id="lz-v-d">50 m/s</span></div>
+        <input type="range" id="lz-v" min="10" max="80" step="1" value="50"></div>
+      <div class="lz-meta"><span>Air · ρ = 1.225 kg/m³ · NACA 2412 at 5° · lift per metre of span.</span></div>
+    </div>
+    <div class="panel"><p class="panel-title">What's happening</p><div class="lz-explain" id="lz-explain"></div></div>
+    <div class="panel"><p class="panel-title">Live values</p><div class="lz-readout" id="lz-readout"></div></div>
+    <div class="panel" style="padding:0"><p class="panel-title" style="padding:16px 16px 4px">Equations</p><div id="lz-eq-panel"></div></div>
+  </aside>
+</div>
+
+<script defer src="/static/js/wing_physics.js"></script>
+<script defer src="/static/js/lesson_render.js"></script>
+<script defer src="/static/js/fluid_wing.js"></script>
+</body>
+</html>

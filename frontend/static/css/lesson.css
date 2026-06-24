@@ -1,0 +1,90 @@
+/* ── Shared "lesson" theme (matches the Vector Calculus pages) ──────── */
+/* Generic .lz-* classes so Statics, Fluid (and future modules) share one
+   look: a lesson-stepper nav, a dark diagram panel, and a sidebar with a
+   live "what's happening" panel, a readout, and KaTeX equation cards.    */
+
+/* Lesson stepper nav */
+.lz-nav {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  padding: 8px 24px 0; max-width: 1280px; margin: 0 auto;
+}
+.lz-step {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 99px;
+  font-size: 0.78rem; font-weight: 600; text-decoration: none;
+  color: var(--muted); background: var(--panel-bg); border: 1px solid var(--border);
+  transition: all 0.12s;
+}
+.lz-step:hover { border-color: var(--accent); color: var(--accent); }
+.lz-step .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%;
+  font-size: 0.68rem; font-weight: 700; background: var(--border); color: var(--text);
+}
+.lz-step.current { background: var(--accent); color: #fff; border-color: var(--accent); }
+.lz-step.current .num { background: rgba(255,255,255,0.25); color: #fff; }
+.lz-arrow { color: var(--border); font-size: 0.8rem; }
+
+/* Layout: diagram + sidebar */
+.lz-layout {
+  display: grid; grid-template-columns: 1fr 340px; gap: 12px;
+  padding: 12px; max-width: 1280px; margin: 0 auto; align-items: start;
+}
+.lz-diagram {
+  background: #0d1117; border-radius: var(--radius); border: 1px solid #1e293b;
+  overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+.lz-svg { width: 100%; height: auto; display: block; }
+.lz-svg.grab { cursor: grab; touch-action: none; }
+.lz-svg.grab.dragging { cursor: grabbing; }
+
+.lz-sidebar { display: flex; flex-direction: column; gap: 12px; }
+
+.lz-meta {
+  margin-top: 10px; display: flex; flex-direction: column; gap: 3px;
+  font-size: 0.73rem; color: var(--muted);
+  border-top: 1px solid var(--border); padding-top: 10px;
+}
+
+/* Live "what's happening" */
+.lz-explain { border-radius: 8px; border: 1px solid var(--border); border-left-width: 4px; padding: 12px 14px; }
+.lz-explain .verdict { font-size: 0.92rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lz-explain .pill { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 99px; }
+.lz-explain p { font-size: 0.82rem; line-height: 1.5; color: var(--text); }
+.lz-explain p + p { margin-top: 6px; }
+.lz-explain .num-hi { font-weight: 700; font-variant-numeric: tabular-nums; }
+.pill-red { background: #fee2e2; color: #b91c1c; }
+.pill-blue { background: #dbeafe; color: #1d4ed8; }
+.pill-green { background: #d1fae5; color: #047857; }
+.pill-amber { background: #fef3c7; color: #b45309; }
+.pill-grey { background: #e5e7eb; color: #374151; }
+
+/* Readout */
+.lz-readout { display: flex; flex-direction: column; gap: 0; }
+.lz-ro-line { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8rem; padding: 5px 2px; border-bottom: 1px solid #f1f3f5; }
+.lz-ro-line:last-child { border-bottom: none; }
+.lz-ro-line .lbl { color: var(--muted); }
+.lz-ro-line .val { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.86rem; }
+
+/* KaTeX equation cards */
+.lz-eq-card { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.lz-eq-card:last-child { border-bottom: none; }
+.lz-eq-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 5px; }
+.lz-eq-body { text-align: center; margin: 4px 0; }
+.lz-eq-body .katex { font-size: 0.95rem !important; }
+.lz-eq-note { font-size: 0.74rem; color: var(--muted); line-height: 1.45; margin-top: 5px; }
+
+/* Selector buttons */
+.lz-btn-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.lz-btn-grid.two { grid-template-columns: 1fr 1fr; }
+.lz-btn {
+  padding: 8px 5px; font-size: 0.75rem; font-weight: 600; text-align: center;
+  border-radius: 6px; border: 1px solid var(--border); background: var(--panel-bg); cursor: pointer; transition: all 0.12s;
+}
+.lz-btn:hover { background: #f0f4ff; border-color: #b9c6ff; }
+.lz-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* Mini canvas plot (statics spring) */
+.lz-plot { width: 100%; height: 150px; display: block; border-radius: 6px; background: #0d1117; }
+
+@media (max-width: 880px) { .lz-layout { grid-template-columns: 1fr; } }

@@ -16,12 +16,20 @@ CATEGORIES = [
         "description": "Forces in equilibrium on inclined planes, springs, and friction.",
         "problems": [
             {
-                "id":          "block-on-slope",
-                "title":       "Block on Slope — Spring & Friction",
-                "description": "Drag the block, watch every force resolve live. Explore the stiction band, release for damped oscillation.",
-                "url":         "/viz/block-on-slope",
+                "id":          "statics-incline",
+                "title":       "1 · Forces on an Incline",
+                "description": "Start here. A clean free-body diagram of a block on a slope — tilt it up and watch friction lose to gravity at tanθ = μₛ. No spring, no clutter.",
+                "url":         "/viz/statics-incline",
                 "available":   True,
-                "tags":        ["friction", "spring", "FBD", "equilibrium"],
+                "tags":        ["friction", "FBD", "equilibrium", "incline"],
+            },
+            {
+                "id":          "statics-spring",
+                "title":       "2 · Spring & Damped Oscillation",
+                "description": "Add a spring and damping. Drag the block to compress it, release, and watch it ring down to equilibrium with a live position-vs-time trace.",
+                "url":         "/viz/statics-spring",
+                "available":   True,
+                "tags":        ["spring", "damping", "oscillation", "SHM"],
             },
         ],
         "icon": "⚖️",
@@ -32,20 +40,28 @@ CATEGORIES = [
         "description": "Pressure, flow, continuity, and the Bernoulli principle.",
         "problems": [
             {
-                "id":          "bernoulli-venturi",
-                "title":       "Bernoulli Equation & Venturi Effect",
-                "description": "Adjust inlet velocity and watch static pressure drop as fluid accelerates through a constriction. Stacked pressure bars show the Bernoulli constant live.",
-                "url":         "/viz/bernoulli-venturi",
+                "id":          "fluid-bernoulli",
+                "title":       "1 · Bernoulli's Principle",
+                "description": "Start here. Pressure, motion and height as one energy budget along a streamline — three coloured bars that always sum to the same total head.",
+                "url":         "/viz/fluid-bernoulli",
                 "available":   True,
-                "tags":        ["Bernoulli", "continuity", "pressure", "venturi", "flow"],
+                "tags":        ["Bernoulli", "energy", "pressure", "streamline"],
             },
             {
-                "id":          "bernoulli-wing",
-                "title":       "Bernoulli — Aircraft Wing & Lift",
-                "description": "Air accelerates over the curved upper surface, pressure drops, and a net upward force emerges. Colour-coded pressure field, streamlines, and live lift/drag arrows all scale with free-stream velocity.",
-                "url":         "/viz/bernoulli-wing",
+                "id":          "fluid-venturi",
+                "title":       "2 · Venturi Effect",
+                "description": "Continuity meets Bernoulli. Pinch the pipe and watch the throat speed triple while a live pressure profile sags exactly where it narrows.",
+                "url":         "/viz/fluid-venturi",
                 "available":   True,
-                "tags":        ["Bernoulli", "lift", "drag", "airfoil", "pressure"],
+                "tags":        ["continuity", "venturi", "pressure", "flow"],
+            },
+            {
+                "id":          "fluid-wing",
+                "title":       "3 · Wing & Lift",
+                "description": "Bernoulli on an airfoil: a colour-coded pressure field, streamlines, and lift/drag arrows that scale with free-stream speed and reveal the L/D ratio.",
+                "url":         "/viz/fluid-wing",
+                "available":   True,
+                "tags":        ["lift", "drag", "airfoil", "pressure", "L/D"],
             },
         ],
         "icon": "💧",
@@ -126,19 +142,29 @@ def home():
     return render_template('home.html', categories=CATEGORIES)
 
 
-@app.route('/viz/block-on-slope')
-def viz_block_on_slope():
-    return render_template('viz/block_on_slope.html')
+@app.route('/viz/statics-incline')
+def viz_statics_incline():
+    return render_template('viz/statics_incline.html')
 
 
-@app.route('/viz/bernoulli-venturi')
-def viz_bernoulli_venturi():
-    return render_template('viz/bernoulli_venturi.html')
+@app.route('/viz/statics-spring')
+def viz_statics_spring():
+    return render_template('viz/statics_spring.html')
 
 
-@app.route('/viz/bernoulli-wing')
-def viz_bernoulli_wing():
-    return render_template('viz/bernoulli_wing.html')
+@app.route('/viz/fluid-bernoulli')
+def viz_fluid_bernoulli():
+    return render_template('viz/fluid_bernoulli.html')
+
+
+@app.route('/viz/fluid-venturi')
+def viz_fluid_venturi():
+    return render_template('viz/fluid_venturi.html')
+
+
+@app.route('/viz/fluid-wing')
+def viz_fluid_wing():
+    return render_template('viz/fluid_wing.html')
 
 
 @app.route('/viz/vc-divergence')
