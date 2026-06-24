@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Visualisations</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body class="home-body">
+
+<header class="home-header">
+  <div class="home-header-inner">
+    <div>
+      <h1 class="home-title">Physics Visualisations</h1>
+      <p class="home-subtitle">Interactive simulations for mechanics, waves, thermodynamics, and more. Pick a category to explore.</p>
+    </div>
+  </div>
+</header>
+
+<main class="home-main">
+  {% for cat in categories %}
+  <section class="category-section">
+    <div class="category-heading">
+      <span class="category-icon">{{ cat.icon }}</span>
+      <div>
+        <h2 class="category-title">{{ cat.title }}</h2>
+        <p class="category-desc">{{ cat.description }}</p>
+      </div>
+    </div>
+
+    {% if cat.problems %}
+    <div class="problem-grid">
+      {% for prob in cat.problems %}
+      <a class="problem-card {% if not prob.available %}problem-card--soon{% endif %}"
+         href="{{ prob.url if prob.available else '#' }}"
+         {% if not prob.available %}aria-disabled="true"{% endif %}>
+        <div class="problem-card-body">
+          <h3 class="problem-title">{{ prob.title }}</h3>
+          <p class="problem-desc">{{ prob.description }}</p>
+          <div class="problem-tags">
+            {% for tag in prob.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="problem-card-footer">
+          {% if prob.available %}
+          <span class="badge badge--live">Live</span>
+          <span class="card-cta">Open →</span>
+          {% else %}
+          <span class="badge badge--soon">Coming soon</span>
+          {% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="category-empty">Problems coming soon.</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+</main>
+
+</body>
+</html>
