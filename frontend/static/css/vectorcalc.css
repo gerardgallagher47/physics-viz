@@ -1,0 +1,268 @@
+/* ── Vector calculus page layout ───────────────────────────────────── */
+
+.vc-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 12px;
+  padding: 12px;
+  max-width: 1280px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Dark diagram panel */
+.vc-diagram-panel {
+  background: #0d1117;
+  border-radius: var(--radius);
+  border: 1px solid #1e293b;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+
+#vc-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+#vc-svg.dragging { cursor: grabbing; }
+
+/* Sidebar */
+.vc-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Field selector buttons ─────────────────────────────────────────── */
+.vc-field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.vc-field-btn {
+  padding: 8px 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.vc-field-btn:hover { background: #f0f4ff; border-color: #b9c6ff; }
+.vc-field-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.vc-field-blurb {
+  margin-top: 10px;
+  font-size: 0.76rem;
+  color: var(--muted);
+  line-height: 1.4;
+  min-height: 2.6em;
+}
+
+/* ── Mode toggle (circulation / flux) ───────────────────────────────── */
+.vc-mode-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+}
+.vc-mode-btn {
+  padding: 8px 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.12s;
+}
+.vc-mode-btn .dot { width: 9px; height: 9px; border-radius: 50%; }
+.vc-mode-btn.active.curl { background: #ecfdf5; border-color: #6ee7b7; color: #047857; }
+.vc-mode-btn.active.flux { background: #fff7ed; border-color: #fdba74; color: #c2410c; }
+
+.vc-meta {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.73rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+/* ── Live readouts: the Green's theorem identity ────────────────────── */
+.vc-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vc-ro-card {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 9px 11px;
+  border-left-width: 3px;
+}
+.vc-ro-card.curl { border-left-color: #10b981; }
+.vc-ro-card.flux { border-left-color: #f97316; }
+
+.vc-ro-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.vc-ro-card.curl .vc-ro-title { color: #059669; }
+.vc-ro-card.flux .vc-ro-title { color: #ea580c; }
+
+.vc-ro-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.78rem;
+  padding: 2px 0;
+}
+.vc-ro-line .lbl  { color: var(--muted); }
+.vc-ro-line .val  {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 0.84rem;
+}
+.vc-ro-line .lbl .katex { font-size: 0.82rem !important; }
+
+.vc-ro-match {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 3px;
+  border-radius: 5px;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* ── Theorem / equation cards (KaTeX) ───────────────────────────────── */
+.vc-eq-card {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.vc-eq-card:last-child { border-bottom: none; }
+
+.vc-eq-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.vc-eq-body { text-align: center; margin: 4px 0; }
+.vc-eq-body .katex { font-size: 0.92rem !important; }
+.vc-eq-note {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.45;
+  margin-top: 5px;
+}
+
+/* ── Lesson progression nav (basics → theorems) ─────────────────────── */
+.vc-lesson-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 24px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.vc-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  transition: all 0.12s;
+}
+.vc-step:hover { border-color: var(--accent); color: var(--accent); }
+.vc-step .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--text);
+}
+.vc-step.current {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.vc-step.current .num { background: rgba(255,255,255,0.25); color: #fff; }
+.vc-step-arrow { color: var(--border); align-self: center; font-size: 0.8rem; }
+
+/* ── Live "what's happening" narrative panel ────────────────────────── */
+.vc-explain {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  padding: 12px 14px;
+  background: var(--panel-bg);
+}
+.vc-explain .verdict {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vc-explain .verdict .pill {
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.vc-explain p {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.vc-explain p:last-child { margin-bottom: 0; }
+.vc-explain .num-hi { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.pill-pos { background: #fee2e2; color: #b91c1c; }   /* source / outflow */
+.pill-neg { background: #dbeafe; color: #1d4ed8; }   /* sink / inflow */
+.pill-ccw { background: #d1fae5; color: #047857; }   /* counter-clockwise */
+.pill-cw  { background: #ede9fe; color: #6d28d9; }   /* clockwise */
+.pill-zero{ background: #e5e7eb; color: #374151; }   /* none */
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 880px) {
+  .vc-layout { grid-template-columns: 1fr; }
+}
