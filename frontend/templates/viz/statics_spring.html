@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring & Damped Oscillation — Statics</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/lesson.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Spring, Release & Damped Oscillation</h1>
+    <p>Add a spring and damping to the slope. Drag the block to compress it, release, and watch it ring down to equilibrium.</p>
+  </div>
+</header>
+
+<nav class="lz-nav">
+  <a class="lz-step" href="/viz/statics-incline"><span class="num">1</span> Forces on an Incline</a>
+  <span class="lz-arrow">→</span>
+  <a class="lz-step current" href="/viz/statics-spring"><span class="num">2</span> Spring & Oscillation</a>
+</nav>
+
+<div class="lz-layout">
+  <section class="lz-diagram">
+    <svg id="lz-svg" class="grab" viewBox="0 0 620 470" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Block on a slope against a spring, with force arrows"></svg>
+  </section>
+
+  <aside class="lz-sidebar">
+    <div class="panel">
+      <p class="panel-title">Parameters</p>
+      <div class="slider-group">
+        <div class="slider-row"><div class="slider-label"><span>m — mass</span><span id="lz-m-d">2.0 kg</span></div>
+          <input type="range" id="lz-m" min="0.5" max="10" step="0.1" value="2"></div>
+        <div class="slider-row"><div class="slider-label"><span>θ — slope angle</span><span id="lz-theta-d">30°</span></div>
+          <input type="range" id="lz-theta" min="5" max="60" step="1" value="30"></div>
+        <div class="slider-row"><div class="slider-label"><span>k — stiffness</span><span id="lz-k-d">200 N/m</span></div>
+          <input type="range" id="lz-k" min="40" max="1000" step="10" value="200"></div>
+        <div class="slider-row"><div class="slider-label"><span>b — damping</span><span id="lz-b-d">12.0 Ns/m</span></div>
+          <input type="range" id="lz-b" min="0" max="60" step="0.5" value="12"></div>
+        <div class="slider-row"><div class="slider-label"><span>μₛ — static friction</span><span id="lz-mus-d">0.30</span></div>
+          <input type="range" id="lz-mus" min="0" max="1" step="0.01" value="0.30"></div>
+        <div class="slider-row"><div class="slider-label"><span>μₖ — kinetic friction</span><span id="lz-muk-d">0.25</span></div>
+          <input type="range" id="lz-muk" min="0" max="1" step="0.01" value="0.25"></div>
+      </div>
+      <div class="btn-row">
+        <button class="primary" id="lz-release">▶ Release</button>
+        <button id="lz-reset">↺ Reset</button>
+      </div>
+      <div class="lz-meta"><span>Drag the block along the slope to set compression. g = 9.81 m/s².</span></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">What's happening</p>
+      <div class="lz-explain" id="lz-explain"></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">Position vs time</p>
+      <canvas id="lz-plot" class="lz-plot" width="316" height="150"></canvas>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">Live values</p>
+      <div class="lz-readout" id="lz-readout"></div>
+    </div>
+
+    <div class="panel" style="padding:0">
+      <p class="panel-title" style="padding:16px 16px 4px">Equations</p>
+      <div id="lz-eq-panel"></div>
+    </div>
+  </aside>
+</div>
+
+<script defer src="/static/js/physics.js"></script>
+<script defer src="/static/js/lesson_render.js"></script>
+<script defer src="/static/js/statics_spring.js"></script>
+</body>
+</html>

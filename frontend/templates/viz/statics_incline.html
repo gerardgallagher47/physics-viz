@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forces on an Incline — Statics</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/lesson.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Forces on an Incline — will it slide?</h1>
+    <p>The free-body diagram of a block on a slope. Tilt it up and watch friction lose the battle with gravity.</p>
+  </div>
+</header>
+
+<nav class="lz-nav">
+  <a class="lz-step current" href="/viz/statics-incline"><span class="num">1</span> Forces on an Incline</a>
+  <span class="lz-arrow">→</span>
+  <a class="lz-step" href="/viz/statics-spring"><span class="num">2</span> Spring & Oscillation</a>
+</nav>
+
+<div class="lz-layout">
+  <section class="lz-diagram">
+    <svg id="lz-svg" viewBox="0 0 620 470" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Free-body diagram of a block on an inclined plane"></svg>
+  </section>
+
+  <aside class="lz-sidebar">
+    <div class="panel">
+      <p class="panel-title">Parameters</p>
+      <div class="slider-group">
+        <div class="slider-row"><div class="slider-label"><span>m — mass</span><span id="lz-m-d">2.0 kg</span></div>
+          <input type="range" id="lz-m" min="0.5" max="10" step="0.1" value="2"></div>
+        <div class="slider-row"><div class="slider-label"><span>θ — slope angle</span><span id="lz-theta-d">15°</span></div>
+          <input type="range" id="lz-theta" min="5" max="75" step="1" value="15"></div>
+        <div class="slider-row"><div class="slider-label"><span>μₛ — static friction</span><span id="lz-mu-d">0.30</span></div>
+          <input type="range" id="lz-mu" min="0" max="1" step="0.01" value="0.30"></div>
+        <div class="slider-row"><div class="slider-label"><span>g — gravity</span><span id="lz-g-d">9.81 m/s²</span></div>
+          <input type="range" id="lz-g" min="1.6" max="25" step="0.01" value="9.81"></div>
+      </div>
+      <label class="toggle-row"><input type="checkbox" id="lz-decomp"> Decompose weight (mg sinθ, mg cosθ)</label>
+      <div class="lz-meta"><span>g defaults to Earth (9.81). Try the Moon at 1.62.</span></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">What's happening</p>
+      <div class="lz-explain" id="lz-explain"></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">Live values</p>
+      <div class="lz-readout" id="lz-readout"></div>
+    </div>
+
+    <div class="panel" style="padding:0">
+      <p class="panel-title" style="padding:16px 16px 4px">Equations</p>
+      <div id="lz-eq-panel"></div>
+    </div>
+  </aside>
+</div>
+
+<script defer src="/static/js/physics.js"></script>
+<script defer src="/static/js/lesson_render.js"></script>
+<script defer src="/static/js/statics_incline.js"></script>
+</body>
+</html>

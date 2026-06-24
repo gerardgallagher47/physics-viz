@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bernoulli's Principle — Fluid Mechanics</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/lesson.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Bernoulli's Principle — energy along a streamline</h1>
+    <p>Pressure, motion and height are three forms of the same energy budget. Speed up or climb, and pressure must give way.</p>
+  </div>
+</header>
+
+<nav class="lz-nav">
+  <a class="lz-step current" href="/viz/fluid-bernoulli"><span class="num">1</span> Bernoulli's Principle</a>
+  <span class="lz-arrow">→</span>
+  <a class="lz-step" href="/viz/fluid-venturi"><span class="num">2</span> Venturi Effect</a>
+  <span class="lz-arrow">→</span>
+  <a class="lz-step" href="/viz/fluid-wing"><span class="num">3</span> Wing & Lift</a>
+</nav>
+
+<div class="lz-layout">
+  <section class="lz-diagram">
+    <svg id="lz-svg" viewBox="0 0 700 470" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Streamline rising and narrowing, with energy-term bars at two points"></svg>
+  </section>
+  <aside class="lz-sidebar">
+    <div class="panel">
+      <p class="panel-title">Controls</p>
+      <div class="slider-row"><div class="slider-label"><span>Inlet speed v₁</span><span id="lz-v1-d">3.0 m/s</span></div>
+        <input type="range" id="lz-v1" min="0.5" max="5" step="0.1" value="3"></div>
+      <div class="lz-meta"><span>Water · ρ = 1000 kg/m³ · area ratio 2 · height rise 2 m.</span></div>
+    </div>
+    <div class="panel"><p class="panel-title">What's happening</p><div class="lz-explain" id="lz-explain"></div></div>
+    <div class="panel"><p class="panel-title">Live values</p><div class="lz-readout" id="lz-readout"></div></div>
+    <div class="panel" style="padding:0"><p class="panel-title" style="padding:16px 16px 4px">Equations</p><div id="lz-eq-panel"></div></div>
+  </aside>
+</div>
+
+<script defer src="/static/js/lesson_render.js"></script>
+<script defer src="/static/js/fluid_bernoulli.js"></script>
+</body>
+</html>
