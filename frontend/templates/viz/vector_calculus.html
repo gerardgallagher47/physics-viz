@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curl, Divergence, Green's &amp; Stokes</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/vectorcalc.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Curl, Divergence &amp; the Great Theorems</h1>
+    <p>Drag the loop through the field. Watch the paddle wheel spin (curl) and the star pulse (divergence) — and see Green's &amp; Stokes' theorems hold live.</p>
+  </div>
+</header>
+
+<div class="vc-layout">
+
+  <!-- ── Dark SVG diagram ─────────────────────────────────────────── -->
+  <section class="vc-diagram-panel">
+    <svg id="vc-svg" viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Interactive vector field with a draggable loop showing curl, divergence, circulation and flux"></svg>
+  </section>
+
+  <!-- ── Sidebar ──────────────────────────────────────────────────── -->
+  <aside class="vc-sidebar">
+
+    <!-- Field + mode controls -->
+    <div class="panel">
+      <p class="panel-title">Vector field</p>
+      <div class="vc-field-grid">
+        <button class="vc-field-btn" data-field="source">Source</button>
+        <button class="vc-field-btn" data-field="sink">Sink</button>
+        <button class="vc-field-btn" data-field="vortex">Vortex</button>
+        <button class="vc-field-btn" data-field="shear">Shear</button>
+        <button class="vc-field-btn" data-field="saddle">Saddle</button>
+        <button class="vc-field-btn" data-field="spiral">Spiral</button>
+      </div>
+      <p class="vc-field-blurb" id="vc-blurb"></p>
+
+      <p class="panel-title" style="margin-top:6px">Highlight on the loop</p>
+      <div class="vc-mode-row">
+        <button class="vc-mode-btn curl" data-mode="curl">
+          <span class="dot" style="background:#10b981"></span> Circulation
+        </button>
+        <button class="vc-mode-btn flux" data-mode="flux">
+          <span class="dot" style="background:#f97316"></span> Flux
+        </button>
+      </div>
+
+      <div class="slider-row" style="margin-top:14px">
+        <div class="slider-label">
+          <span>Loop radius r</span>
+          <span id="vc-r-display">1.00</span>
+        </div>
+        <input type="range" id="vc-r-slider" min="0.5" max="2.0" step="0.05" value="1.0">
+      </div>
+
+      <div class="vc-meta">
+        <span>Drag anywhere on the canvas to move the loop.</span>
+        <span>Paddle wheel spins at the local curl; star pulses with divergence.</span>
+      </div>
+    </div>
+
+    <!-- Live Green's-theorem readout -->
+    <div class="panel">
+      <p class="panel-title">Green's theorem, live</p>
+      <div class="vc-readout" id="vc-readout"></div>
+    </div>
+
+    <!-- Theorem reference -->
+    <div class="panel" style="padding:0">
+      <p class="panel-title" style="padding:16px 16px 4px">Definitions &amp; theorems</p>
+      <div id="vc-eq-panel"></div>
+    </div>
+
+  </aside>
+</div>
+
+<script src="/static/js/vectorcalc_physics.js"></script>
+<script src="/static/js/vectorcalc_app.js"></script>
+
+</body>
+</html>

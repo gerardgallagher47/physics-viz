@@ -51,6 +51,22 @@ CATEGORIES = [
         "icon": "💧",
     },
     {
+        "id":          "vector-calculus",
+        "title":       "Vector Calculus",
+        "description": "Curl, divergence, and the theorems of Green and Stokes — seen, not just stated.",
+        "problems": [
+            {
+                "id":          "vector-calculus",
+                "title":       "Curl, Divergence, Green's & Stokes",
+                "description": "Drag a loop through six vector fields. A paddle wheel spins at the local curl, a star pulses with divergence, and the boundary line integrals match the area integrals live — Green's theorem in action.",
+                "url":         "/viz/vector-calculus",
+                "available":   True,
+                "tags":        ["curl", "divergence", "Green's theorem", "Stokes", "flux", "circulation"],
+            },
+        ],
+        "icon": "🌀",
+    },
+    {
         "id":          "dynamics",
         "title":       "Dynamics",
         "description": "Newton's laws, projectile motion, and energy methods.",
@@ -99,6 +115,11 @@ def viz_bernoulli_venturi():
 @app.route('/viz/bernoulli-wing')
 def viz_bernoulli_wing():
     return render_template('viz/bernoulli_wing.html')
+
+
+@app.route('/viz/vector-calculus')
+def viz_vector_calculus():
+    return render_template('viz/vector_calculus.html')
 
 
 if __name__ == '__main__':
