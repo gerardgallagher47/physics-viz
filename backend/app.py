@@ -51,6 +51,30 @@ CATEGORIES = [
         "icon": "💧",
     },
     {
+        "id":          "aerospace",
+        "title":       "Aerospace Engineering",
+        "description": "Vector calculus put to work: control volumes, continuity, and the origin of lift.",
+        "problems": [
+            {
+                "id":          "aero-continuity",
+                "title":       "1 · Continuity & the Control Volume",
+                "description": "The Divergence Theorem applied to mass. Squeeze a duct and watch the flow accelerate to keep mass-in equal to mass-out — the foundation of control-volume analysis.",
+                "url":         "/viz/aero-continuity",
+                "available":   True,
+                "tags":        ["continuity", "control volume", "divergence theorem", "mass flux"],
+            },
+            {
+                "id":          "aero-circulation",
+                "title":       "2 · Circulation & Lift",
+                "description": "Where curl, Stokes and Bernoulli meet. Dial in circulation around a wing and watch Kutta–Joukowski lift L' = ρV∞Γ appear — with no circulation, no lift.",
+                "url":         "/viz/aero-circulation",
+                "available":   True,
+                "tags":        ["circulation", "lift", "Kutta-Joukowski", "vorticity", "airfoil"],
+            },
+        ],
+        "icon": "✈️",
+    },
+    {
         "id":          "dynamics",
         "title":       "Dynamics",
         "description": "Newton's laws, projectile motion, and energy methods.",
@@ -99,6 +123,16 @@ def viz_bernoulli_venturi():
 @app.route('/viz/bernoulli-wing')
 def viz_bernoulli_wing():
     return render_template('viz/bernoulli_wing.html')
+
+
+@app.route('/viz/aero-continuity')
+def viz_aero_continuity():
+    return render_template('viz/aero_continuity.html')
+
+
+@app.route('/viz/aero-circulation')
+def viz_aero_circulation():
+    return render_template('viz/aero_circulation.html')
 
 
 if __name__ == '__main__':

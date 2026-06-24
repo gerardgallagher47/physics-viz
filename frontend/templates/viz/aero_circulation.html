@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circulation & Lift — Aero</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/aero.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Circulation & Lift</h1>
+    <p>Where curl, Stokes' theorem and Bernoulli meet — the Kutta–Joukowski origin of aerodynamic lift.</p>
+  </div>
+</header>
+
+<nav class="aero-nav">
+  <a class="aero-step" href="/viz/aero-continuity"><span class="num">1</span> Continuity</a>
+  <span class="aero-arrow">→</span>
+  <a class="aero-step current" href="/viz/aero-circulation"><span class="num">2</span> Circulation & Lift</a>
+  <a class="aero-step prereq" href="/">Prereq: Vector Calculus →</a>
+</nav>
+
+<!-- ── Theorem + equations always at the top ──────────────────────── -->
+<section class="aero-banner">
+  <div class="aero-concept">
+    <div class="theorem-name">Kutta–Joukowski Theorem</div>
+    <h2>Lift is circulation times free-stream momentum.</h2>
+    <p>A wing acts like a bound vortex of strength Γ. Superposed on the free stream, it speeds the air over the top and slows it underneath — low pressure above, high pressure below, and a net upward force.</p>
+    <p>With no circulation there is no lift at all (d'Alembert's paradox). The sharp trailing edge and the Kutta condition are what set Γ for a real airfoil.</p>
+  </div>
+  <div class="aero-eqbox">
+    <div class="eq-caption">Governing equations</div>
+    <div id="aero-eqs"></div>
+  </div>
+</section>
+
+<!-- ── Diagram + live controls ────────────────────────────────────── -->
+<div class="aero-main">
+  <section class="aero-diagram-panel">
+    <svg id="aero-svg" viewBox="0 0 820 460" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Airfoil as a bound vortex with circulation and lift"></svg>
+  </section>
+
+  <aside class="aero-sidebar">
+    <div class="panel">
+      <p class="panel-title">Controls</p>
+      <div class="slider-row">
+        <div class="slider-label"><span>Free-stream V∞</span><span id="aero-vinf-disp">50 m/s</span></div>
+        <input type="range" id="aero-vinf" min="10" max="90" step="1" value="50">
+      </div>
+      <div class="slider-row" style="margin-top:10px">
+        <div class="slider-label"><span>Circulation Γ</span><span id="aero-gamma-disp">18 m²/s</span></div>
+        <input type="range" id="aero-gamma" min="0" max="36" step="1" value="18">
+      </div>
+      <div class="aero-meta"><span>Air · ρ = 1.225 kg/m³ · lift is per metre of span.</span></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">What's happening</p>
+      <div class="aero-explain" id="aero-explain"></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">Live values</p>
+      <div class="aero-readout" id="aero-readout"></div>
+    </div>
+  </aside>
+</div>
+
+<script defer src="/static/js/aero_render.js"></script>
+<script defer src="/static/js/aero_circulation.js"></script>
+</body>
+</html>

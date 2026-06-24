@@ -1,0 +1,140 @@
+/* ── Aerospace Engineering visuals — shared layout ──────────────────── */
+
+/* Lesson nav (series stepper) */
+.aero-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 24px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.aero-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  transition: all 0.12s;
+}
+.aero-step:hover { border-color: var(--accent); color: var(--accent); }
+.aero-step .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%;
+  font-size: 0.68rem; font-weight: 700;
+  background: var(--border); color: var(--text);
+}
+.aero-step.current { background: var(--accent); color: #fff; border-color: var(--accent); }
+.aero-step.current .num { background: rgba(255,255,255,0.25); color: #fff; }
+.aero-step.prereq { margin-left: auto; font-style: italic; }
+.aero-arrow { color: var(--border); font-size: 0.8rem; }
+
+/* ── Top banner: theorem + explanation (left) and equations (right) ── */
+.aero-banner {
+  max-width: 1280px;
+  margin: 12px auto 0;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 12px;
+}
+.aero-concept, .aero-eqbox {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 18px;
+}
+.aero-concept { border-left: 4px solid var(--accent); }
+.aero-concept .theorem-name {
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--accent); margin-bottom: 6px;
+}
+.aero-concept h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+.aero-concept p { font-size: 0.86rem; line-height: 1.5; color: var(--text); }
+.aero-concept p + p { margin-top: 6px; color: var(--muted); }
+
+/* Equation box */
+.aero-eqbox { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.aero-eqbox .eq-caption {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--muted); margin-bottom: 2px;
+}
+.aero-eq-row {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 5px 8px; border-radius: 6px; background: #f7f9fc;
+  border: 1px solid var(--border);
+}
+.aero-eq-label {
+  font-size: 0.68rem; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.04em; min-width: 86px;
+}
+.aero-eq .katex { font-size: 1.0rem !important; }
+
+/* ── Main area: diagram + sidebar ───────────────────────────────────── */
+.aero-main {
+  max-width: 1280px;
+  margin: 12px auto;
+  padding: 0 12px 12px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+  align-items: start;
+}
+.aero-diagram-panel {
+  background: #0d1117;
+  border-radius: var(--radius);
+  border: 1px solid #1e293b;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+#aero-svg { width: 100%; height: auto; display: block; }
+
+.aero-sidebar { display: flex; flex-direction: column; gap: 12px; }
+
+.aero-meta {
+  margin-top: 10px; display: flex; flex-direction: column; gap: 3px;
+  font-size: 0.73rem; color: var(--muted);
+  border-top: 1px solid var(--border); padding-top: 10px;
+}
+
+/* Live "what's happening" panel */
+.aero-explain { border-radius: 8px; border: 1px solid var(--border); border-left-width: 4px; padding: 12px 14px; }
+.aero-explain .verdict { font-size: 0.92rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.aero-explain .pill { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 99px; }
+.aero-explain p { font-size: 0.82rem; line-height: 1.5; color: var(--text); }
+.aero-explain p + p { margin-top: 6px; }
+.aero-explain .num-hi { font-weight: 700; font-variant-numeric: tabular-nums; }
+.pill-blue { background: #dbeafe; color: #1d4ed8; }
+.pill-green { background: #d1fae5; color: #047857; }
+.pill-amber { background: #fef3c7; color: #b45309; }
+
+/* Readout table */
+.aero-readout { display: flex; flex-direction: column; gap: 4px; }
+.aero-ro-line { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8rem; padding: 4px 2px; border-bottom: 1px solid #f1f3f5; }
+.aero-ro-line:last-child { border-bottom: none; }
+.aero-ro-line .lbl { color: var(--muted); }
+.aero-ro-line .val { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.86rem; }
+
+/* Field/shape selector buttons (reused) */
+.aero-btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.aero-btn {
+  padding: 8px 6px; font-size: 0.76rem; font-weight: 600; text-align: center;
+  border-radius: 6px; border: 1px solid var(--border); background: var(--panel-bg); cursor: pointer;
+  transition: all 0.12s;
+}
+.aero-btn:hover { background: #f0f4ff; border-color: #b9c6ff; }
+.aero-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .aero-banner { grid-template-columns: 1fr; }
+  .aero-main { grid-template-columns: 1fr; }
+}
