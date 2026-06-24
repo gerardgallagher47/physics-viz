@@ -54,7 +54,29 @@ const FIELDS = {
     P: (x, y) => x - y,  Q: (x, y) => x + y,
     div: () => 2,        curl: () => 2,
   },
+  // Spatially-varying fields — divergence/curl change from place to place,
+  // so their heatmaps show structure (computed numerically, div/curl = null).
+  bump: {
+    key: 'bump', name: 'Hot Spot',
+    blurb: 'A localized burst: strong outflow at the centre, weak inflow in the surrounding ring. Divergence changes with position.',
+    latex: '\\langle x,\\; y\\rangle\\, e^{-(x^2+y^2)/3}',
+    P: (x, y) => x * Math.exp(-(x * x + y * y) / 3),
+    Q: (x, y) => y * Math.exp(-(x * x + y * y) / 3),
+    div: null, curl: null,
+  },
+  wavy: {
+    key: 'wavy', name: 'Ripple',
+    blurb: 'A rippling flow whose spin reverses from cell to cell — curl is positive in some patches, negative in others, with zero divergence.',
+    latex: '\\langle \\sin y,\\; \\sin x\\rangle',
+    P: (x, y) => Math.sin(y),
+    Q: (x, y) => Math.sin(x),
+    div: null, curl: null,
+  },
 };
+
+// Resolve div/curl at a point: prefer the closed form, else go numerical.
+function fieldDiv(f, x, y)  { return f.div  ? f.div()  : divergenceAt(f, x, y); }
+function fieldCurl(f, x, y) { return f.curl ? f.curl() : curlAt(f, x, y); }
 
 // ── Local differential operators (numerical, central difference) ──────
 function divergenceAt(f, x, y, h = 1e-3) {

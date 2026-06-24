@@ -56,12 +56,36 @@ CATEGORIES = [
         "description": "Curl, divergence, and the theorems of Green and Stokes — seen, not just stated.",
         "problems": [
             {
-                "id":          "vector-calculus",
-                "title":       "Curl, Divergence, Green's & Stokes",
-                "description": "Drag a loop through six vector fields. A paddle wheel spins at the local curl, a star pulses with divergence, and the boundary line integrals match the area integrals live — Green's theorem in action.",
-                "url":         "/viz/vector-calculus",
+                "id":          "vc-divergence",
+                "title":       "1 · Divergence — Sources & Sinks",
+                "description": "Start here. Drag a loop through a field and watch how much flow leaves versus enters. A colour map and a pulsing star reveal where the field has positive or negative divergence.",
+                "url":         "/viz/vc-divergence",
                 "available":   True,
-                "tags":        ["curl", "divergence", "Green's theorem", "Stokes", "flux", "circulation"],
+                "tags":        ["divergence", "flux", "source", "sink"],
+            },
+            {
+                "id":          "vc-curl",
+                "title":       "2 · Curl — Local Rotation",
+                "description": "A paddle wheel spins at the local curl and a colour map shows clockwise versus counter-clockwise regions. See why even perfectly straight 'shear' flow can have curl.",
+                "url":         "/viz/vc-curl",
+                "available":   True,
+                "tags":        ["curl", "circulation", "rotation", "vorticity"],
+            },
+            {
+                "id":          "vc-greens",
+                "title":       "3 · Green's Theorem — Edge = Interior",
+                "description": "Combine the basics: the integral around a loop's boundary equals the curl (or divergence) summed over its inside. A subdivision overlay shows why the interior cancels.",
+                "url":         "/viz/vc-greens",
+                "available":   True,
+                "tags":        ["Green's theorem", "circulation", "flux", "boundary"],
+            },
+            {
+                "id":          "vc-stokes",
+                "title":       "4 · Stokes' Theorem — Only the Rim Matters",
+                "description": "The 3-D leap. Reshape a cap surface over a fixed rim and watch the curl flux through it stay equal to the circulation around the rim — no matter the surface.",
+                "url":         "/viz/vc-stokes",
+                "available":   True,
+                "tags":        ["Stokes", "surface independence", "curl flux", "3D"],
             },
         ],
         "icon": "🌀",
@@ -117,9 +141,24 @@ def viz_bernoulli_wing():
     return render_template('viz/bernoulli_wing.html')
 
 
-@app.route('/viz/vector-calculus')
-def viz_vector_calculus():
-    return render_template('viz/vector_calculus.html')
+@app.route('/viz/vc-divergence')
+def viz_vc_divergence():
+    return render_template('viz/vc_divergence.html')
+
+
+@app.route('/viz/vc-curl')
+def viz_vc_curl():
+    return render_template('viz/vc_curl.html')
+
+
+@app.route('/viz/vc-greens')
+def viz_vc_greens():
+    return render_template('viz/vc_greens.html')
+
+
+@app.route('/viz/vc-stokes')
+def viz_vc_stokes():
+    return render_template('viz/vc_stokes.html')
 
 
 if __name__ == '__main__':

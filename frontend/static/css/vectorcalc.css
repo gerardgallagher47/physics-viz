@@ -180,6 +180,88 @@
   margin-top: 5px;
 }
 
+/* ── Lesson progression nav (basics → theorems) ─────────────────────── */
+.vc-lesson-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 24px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.vc-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  transition: all 0.12s;
+}
+.vc-step:hover { border-color: var(--accent); color: var(--accent); }
+.vc-step .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--text);
+}
+.vc-step.current {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.vc-step.current .num { background: rgba(255,255,255,0.25); color: #fff; }
+.vc-step-arrow { color: var(--border); align-self: center; font-size: 0.8rem; }
+
+/* ── Live "what's happening" narrative panel ────────────────────────── */
+.vc-explain {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  padding: 12px 14px;
+  background: var(--panel-bg);
+}
+.vc-explain .verdict {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vc-explain .verdict .pill {
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.vc-explain p {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.vc-explain p:last-child { margin-bottom: 0; }
+.vc-explain .num-hi { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.pill-pos { background: #fee2e2; color: #b91c1c; }   /* source / outflow */
+.pill-neg { background: #dbeafe; color: #1d4ed8; }   /* sink / inflow */
+.pill-ccw { background: #d1fae5; color: #047857; }   /* counter-clockwise */
+.pill-cw  { background: #ede9fe; color: #6d28d9; }   /* clockwise */
+.pill-zero{ background: #e5e7eb; color: #374151; }   /* none */
+
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media (max-width: 880px) {
   .vc-layout { grid-template-columns: 1fr; }

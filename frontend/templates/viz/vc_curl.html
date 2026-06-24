@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curl — Vector Calculus</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/vectorcalc.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="nav-back" href="/">← Problem Library</a>
+  <div class="nav-divider"></div>
+  <div>
+    <h1>Curl — would a tiny paddle wheel spin here?</h1>
+    <p>Drag the loop. The paddle wheel turns at the local curl; its direction tells you the sign.</p>
+  </div>
+</header>
+
+<nav class="vc-lesson-nav">
+  <a class="vc-step" href="/viz/vc-divergence"><span class="num">1</span> Divergence</a>
+  <span class="vc-step-arrow">→</span>
+  <a class="vc-step current" href="/viz/vc-curl"><span class="num">2</span> Curl</a>
+  <span class="vc-step-arrow">→</span>
+  <a class="vc-step" href="/viz/vc-greens"><span class="num">3</span> Green's Theorem</a>
+  <span class="vc-step-arrow">→</span>
+  <a class="vc-step" href="/viz/vc-stokes"><span class="num">4</span> Stokes' Theorem</a>
+</nav>
+
+<div class="vc-layout">
+  <section class="vc-diagram-panel">
+    <svg id="vc-svg" viewBox="0 0 620 600" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Vector field coloured by curl with a draggable loop and spinning paddle wheel"></svg>
+  </section>
+
+  <aside class="vc-sidebar">
+    <div class="panel">
+      <p class="panel-title">Vector field</p>
+      <div class="vc-field-grid">
+        <button class="vc-field-btn" data-field="vortex">Vortex</button>
+        <button class="vc-field-btn" data-field="shear">Shear</button>
+        <button class="vc-field-btn" data-field="wavy">Ripple</button>
+        <button class="vc-field-btn" data-field="saddle">Saddle</button>
+        <button class="vc-field-btn" data-field="spiral">Spiral</button>
+      </div>
+      <p class="vc-field-blurb" id="vc-blurb"></p>
+      <div class="slider-row" style="margin-top:8px">
+        <div class="slider-label"><span>Loop radius r</span><span id="vc-r-display">1.00</span></div>
+        <input type="range" id="vc-r-slider" min="0.5" max="2.0" step="0.05" value="1.0">
+      </div>
+      <div class="vc-meta"><span>Drag anywhere on the canvas to move the loop.</span></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">What's happening</p>
+      <div class="vc-explain" id="vc-explain"></div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">The numbers</p>
+      <div class="vc-readout" id="vc-readout"></div>
+    </div>
+
+    <div class="panel" style="padding:0">
+      <p class="panel-title" style="padding:16px 16px 4px">Definition</p>
+      <div id="vc-eq-panel"></div>
+    </div>
+  </aside>
+</div>
+
+<script defer src="/static/js/vectorcalc_physics.js"></script>
+<script defer src="/static/js/vectorcalc_render.js"></script>
+<script defer src="/static/js/vc_curl.js"></script>
+</body>
+</html>
