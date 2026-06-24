@@ -26,6 +26,42 @@
   <a class="lz-step current" href="/viz/statics-spring"><span class="num">2</span> Spring & Oscillation</a>
 </nav>
 
+<section class="lz-teach">
+  <div class="lz-teach-card">
+    <div class="lz-teach-top">
+      <div class="lz-topic">
+        <div class="lz-topic-tag">Statics → Dynamics · Spring &amp; Damping</div>
+        <h2>A spring balances gravity, then rings down to rest</h2>
+        <p>Add a spring along the slope. At its rest point the spring's squeeze exactly carries the down-slope pull of gravity. Push the block away from there and release: the leftover force drives an oscillation while damping bleeds energy until it settles.</p>
+      </div>
+      <div class="lz-eqmain">
+        <div class="cap">Equation of motion (along the slope)</div>
+        <div data-tex="m\ddot{x} = mg\sin\theta - kx - b\dot{x} - f"></div>
+      </div>
+    </div>
+    <div class="lz-drops">
+      <details class="lz-drop" open>
+        <summary>How it maps to the diagram</summary>
+        <div class="body"><div class="lz-legend">
+          <div class="lz-leg"><span class="sw line" style="background:#34d399"></span><span><b>Green coil</b> — spring force kx, pushing up the slope</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#ef4444"></span><span><b>Red arrow</b> — weight W = mg</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#f59e0b"></span><span><b>Amber arrow</b> — friction f</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#a855f7"></span><span><b>Purple arrow</b> — net force driving the motion</span></div>
+          <div class="lz-leg"><span class="sw dash" style="border-color:#64748b"></span><span><b>Dashed line</b> — equilibrium position x_eq</span></div>
+          <div class="lz-leg"><span class="sw line" style="background:#38bdf8"></span><span><b>Blue trace</b> — compression x versus time</span></div>
+        </div></div>
+      </details>
+      <details class="lz-drop">
+        <summary>Go deeper</summary>
+        <div class="body">
+          <p>At equilibrium the acceleration is zero, so kx_eq = mg sin θ, giving x_eq = mg sin θ ⁄ k. Displace the block from there and Newton's law above governs the return.</p>
+          <p>The damping ratio ζ = b ⁄ 2√(km) decides the character: ζ &lt; 1 overshoots and rings (under-damped), ζ = 1 is the fastest no-overshoot return (critical), ζ &gt; 1 crawls back (over-damped). Static friction also adds a small dead-band where the block can stop short.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <div class="lz-layout">
   <section class="lz-diagram">
     <svg id="lz-svg" class="grab" viewBox="0 0 620 470" xmlns="http://www.w3.org/2000/svg"
@@ -66,15 +102,15 @@
       <canvas id="lz-plot" class="lz-plot" width="316" height="150"></canvas>
     </div>
 
-    <div class="panel">
-      <p class="panel-title">Live values</p>
+    <details class="panel" open>
+      <summary class="panel-title">Live values</summary>
       <div class="lz-readout" id="lz-readout"></div>
-    </div>
+    </details>
 
-    <div class="panel" style="padding:0">
-      <p class="panel-title" style="padding:16px 16px 4px">Equations</p>
+    <details class="panel">
+      <summary class="panel-title">More equations</summary>
       <div id="lz-eq-panel"></div>
-    </div>
+    </details>
   </aside>
 </div>
 

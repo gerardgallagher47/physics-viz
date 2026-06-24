@@ -27,6 +27,41 @@
   <a class="lz-step" href="/viz/fluid-wing"><span class="num">3</span> Wing & Lift</a>
 </nav>
 
+<section class="lz-teach">
+  <div class="lz-teach-card">
+    <div class="lz-teach-top">
+      <div class="lz-topic">
+        <div class="lz-topic-tag">Fluid Mechanics · Continuity + Bernoulli</div>
+        <h2>Why a pipe's narrow throat has the lowest pressure</h2>
+        <p>The same volume of fluid must pass every cross-section each second, so where the pipe narrows the flow has to speed up. Bernoulli then says faster flow carries lower pressure — so the throat is at once the fastest and the lowest-pressure point.</p>
+      </div>
+      <div class="lz-eqmain">
+        <div class="cap">Continuity → pressure drop</div>
+        <div data-tex="A_1 v_1 = A_2 v_2 \;\Longrightarrow\; \Delta P = \tfrac12\rho\,(v_2^2 - v_1^2)"></div>
+      </div>
+    </div>
+    <div class="lz-drops">
+      <details class="lz-drop" open>
+        <summary>How it maps to the diagram</summary>
+        <div class="body"><div class="lz-legend">
+          <div class="lz-leg"><span class="sw line" style="background:#e2e8f0"></span><span><b>White curve</b> — static pressure along the pipe; it sags where the pipe pinches</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#3b82f6"></span><span><b>Blue fill</b> — static pressure P</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#f97316"></span><span><b>Orange fill</b> — dynamic pressure ½ρv²</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#67e8f9"></span><span><b>Dots</b> — fluid; colour shows local speed (fastest in the throat)</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#fbbf24"></span><span><b>Markers v₁, v₂</b> — inlet and throat stations</span></div>
+        </div></div>
+      </details>
+      <details class="lz-drop">
+        <summary>Go deeper</summary>
+        <div class="body">
+          <p>The throat area is one-third of the inlet, so continuity forces v₂ = 3v₁. Substituting into Bernoulli gives the pressure drop ΔP = ½ρ(v₂² − v₁²), which grows with the <em>square</em> of the inlet speed.</p>
+          <p>This is exactly how a carburettor, a perfume atomiser and a Venturi flow-meter work — the low-pressure throat draws in or measures fluid.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <div class="lz-layout">
   <section class="lz-diagram">
     <svg id="lz-svg" viewBox="0 0 700 470" xmlns="http://www.w3.org/2000/svg"
@@ -40,8 +75,8 @@
       <div class="lz-meta"><span>Water · ρ = 1000 kg/m³ · area ratio A₁/A₂ = 3 · horizontal.</span></div>
     </div>
     <div class="panel"><p class="panel-title">What's happening</p><div class="lz-explain" id="lz-explain"></div></div>
-    <div class="panel"><p class="panel-title">Live values</p><div class="lz-readout" id="lz-readout"></div></div>
-    <div class="panel" style="padding:0"><p class="panel-title" style="padding:16px 16px 4px">Equations</p><div id="lz-eq-panel"></div></div>
+    <details class="panel" open><summary class="panel-title">Live values</summary><div class="lz-readout" id="lz-readout"></div></details>
+    <details class="panel"><summary class="panel-title">More equations</summary><div id="lz-eq-panel"></div></details>
   </aside>
 </div>
 

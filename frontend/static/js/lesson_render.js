@@ -59,3 +59,15 @@ function lTheory(panelId, cards) {
     panel.appendChild(div);
   });
 }
+
+// Render any element carrying a data-tex attribute (banner equations).
+// Runs on load; lesson_render.js is deferred and ordered after KaTeX.
+function lRenderInlineTex(root) {
+  if (typeof katex === 'undefined') return;
+  (root || document).querySelectorAll('[data-tex]').forEach(el => {
+    if (el.dataset.rendered) return;
+    katex.render(el.dataset.tex, el, { throwOnError: false, displayMode: el.hasAttribute('data-display') });
+    el.dataset.rendered = '1';
+  });
+}
+lRenderInlineTex();

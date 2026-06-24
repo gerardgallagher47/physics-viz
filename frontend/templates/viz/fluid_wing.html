@@ -27,6 +27,41 @@
   <a class="lz-step current" href="/viz/fluid-wing"><span class="num">3</span> Wing & Lift</a>
 </nav>
 
+<section class="lz-teach">
+  <div class="lz-teach-card">
+    <div class="lz-teach-top">
+      <div class="lz-topic">
+        <div class="lz-topic-tag">Fluid Mechanics · Lift</div>
+        <h2>How a pressure difference lifts a wing</h2>
+        <p>Air travels faster over the curved top of the airfoil than under the flatter bottom. By Bernoulli, faster flow means lower pressure — so the top surface is suction and the bottom is push. Summed over the wing, that difference is lift.</p>
+      </div>
+      <div class="lz-eqmain">
+        <div class="cap">Lift per unit span</div>
+        <div data-tex="L = \tfrac12\rho V_\infty^2\, C_L\, c"></div>
+      </div>
+    </div>
+    <div class="lz-drops">
+      <details class="lz-drop" open>
+        <summary>How it maps to the diagram</summary>
+        <div class="body"><div class="lz-legend">
+          <div class="lz-leg"><span class="sw" style="background:#ef4444"></span><span><b>Red zone</b> — low pressure above the wing (fast flow)</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#1d4ed8"></span><span><b>Blue zone</b> — high pressure below the wing (slow flow)</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#22c55e"></span><span><b>Green arrow</b> — lift L, pushing the wing up</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#f59e0b"></span><span><b>Amber arrow</b> — drag D, pushing it downstream</span></div>
+          <div class="lz-leg"><span class="sw line" style="background:#7db4ff"></span><span><b>Streamlines</b> — air paths, bunched tighter over the top</span></div>
+        </div></div>
+      </details>
+      <details class="lz-drop">
+        <summary>Go deeper</summary>
+        <div class="body">
+          <p>Both lift and drag scale with the dynamic pressure q = ½ρV², so doubling the speed roughly quadruples the lift. C_L and C_D are dimensionless coefficients set by the airfoil shape and angle of attack, and c is the chord length.</p>
+          <p>Their ratio L/D = C_L ⁄ C_D is the wing's aerodynamic efficiency — fixed by geometry, not by how fast you fly.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <div class="lz-layout">
   <section class="lz-diagram">
     <svg id="lz-svg" viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg"
@@ -40,8 +75,8 @@
       <div class="lz-meta"><span>Air · ρ = 1.225 kg/m³ · NACA 2412 at 5° · lift per metre of span.</span></div>
     </div>
     <div class="panel"><p class="panel-title">What's happening</p><div class="lz-explain" id="lz-explain"></div></div>
-    <div class="panel"><p class="panel-title">Live values</p><div class="lz-readout" id="lz-readout"></div></div>
-    <div class="panel" style="padding:0"><p class="panel-title" style="padding:16px 16px 4px">Equations</p><div id="lz-eq-panel"></div></div>
+    <details class="panel" open><summary class="panel-title">Live values</summary><div class="lz-readout" id="lz-readout"></div></details>
+    <details class="panel"><summary class="panel-title">More equations</summary><div id="lz-eq-panel"></div></details>
   </aside>
 </div>
 

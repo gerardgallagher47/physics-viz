@@ -87,4 +87,53 @@
 /* Mini canvas plot (statics spring) */
 .lz-plot { width: 100%; height: 150px; display: block; border-radius: 6px; background: #0d1117; }
 
-@media (max-width: 880px) { .lz-layout { grid-template-columns: 1fr; } }
+/* ── Teaching banner (topic + explanation + equation + diagram key) ─── */
+.lz-teach { max-width: 1280px; margin: 12px auto 0; padding: 0 12px; }
+.lz-teach-card {
+  background: var(--panel-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 16px 18px; border-left: 4px solid var(--accent);
+}
+.lz-teach-top { display: grid; grid-template-columns: 1fr 0.82fr; gap: 18px; align-items: center; }
+.lz-topic-tag { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 5px; }
+.lz-topic h2 { font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+.lz-topic p { font-size: 0.87rem; line-height: 1.55; color: var(--text); }
+.lz-eqmain { background: #f6f8fc; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; text-align: center; }
+.lz-eqmain .cap { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+.lz-eqmain .katex { font-size: 1.18rem !important; }
+
+/* Dropdowns (details/summary) */
+.lz-drops { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.lz-drop { flex: 1; min-width: 250px; border: 1px solid var(--border); border-radius: 8px; background: #fbfcfe; }
+.lz-drop > summary {
+  cursor: pointer; padding: 10px 13px; font-size: 0.8rem; font-weight: 700; color: var(--text);
+  list-style: none; display: flex; align-items: center; gap: 8px;
+}
+.lz-drop > summary::-webkit-details-marker { display: none; }
+.lz-drop > summary::before { content: '▸'; color: var(--accent); transition: transform 0.15s; font-size: 0.8rem; }
+.lz-drop[open] > summary::before { transform: rotate(90deg); }
+.lz-drop .body { padding: 0 14px 13px; font-size: 0.82rem; line-height: 1.55; color: var(--muted); }
+.lz-drop .body p + p { margin-top: 6px; }
+
+/* Diagram legend (equation ↔ diagram mapping) */
+.lz-legend { display: flex; flex-direction: column; gap: 7px; }
+.lz-leg { display: flex; align-items: flex-start; gap: 10px; font-size: 0.82rem; color: var(--text); }
+.lz-leg .sw { width: 15px; height: 15px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+.lz-leg .sw.line { height: 4px; margin-top: 7px; }
+.lz-leg .sw.dash { height: 0; border-top: 2px dashed; background: none !important; margin-top: 8px; }
+.lz-leg span b { color: var(--text); }
+
+/* Collapsible sidebar panels */
+details.panel { padding-top: 0; }
+details.panel > summary {
+  cursor: pointer; list-style: none; padding: 16px 0 12px; margin: 0;
+}
+details.panel > summary::-webkit-details-marker { display: none; }
+details.panel > summary.panel-title { margin-bottom: 0; }
+details.panel > summary.panel-title::after { content: '▸'; float: right; color: var(--accent); transition: transform 0.15s; }
+details.panel[open] > summary.panel-title::after { content: '▾'; }
+details.panel[open] > summary.panel-title { margin-bottom: 12px; }
+
+@media (max-width: 880px) {
+  .lz-layout { grid-template-columns: 1fr; }
+  .lz-teach-top { grid-template-columns: 1fr; gap: 12px; }
+}

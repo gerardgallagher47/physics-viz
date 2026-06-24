@@ -27,6 +27,41 @@
   <a class="lz-step" href="/viz/fluid-wing"><span class="num">3</span> Wing & Lift</a>
 </nav>
 
+<section class="lz-teach">
+  <div class="lz-teach-card">
+    <div class="lz-teach-top">
+      <div class="lz-topic">
+        <div class="lz-topic-tag">Fluid Mechanics · Energy of a Flow</div>
+        <h2>Pressure, speed and height share one energy budget</h2>
+        <p>Follow a parcel of fluid along a streamline. Its energy comes in three forms — pressure, motion, and height. Bernoulli's principle says their sum stays fixed, so if the flow speeds up or rises, the pressure must drop to pay for it.</p>
+      </div>
+      <div class="lz-eqmain">
+        <div class="cap">Bernoulli's equation</div>
+        <div data-tex="P + \tfrac12\rho v^2 + \rho g h = \text{constant}"></div>
+      </div>
+    </div>
+    <div class="lz-drops">
+      <details class="lz-drop" open>
+        <summary>How it maps to the diagram</summary>
+        <div class="body"><div class="lz-legend">
+          <div class="lz-leg"><span class="sw" style="background:#3b82f6"></span><span><b>Blue block</b> — pressure energy P</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#f97316"></span><span><b>Orange block</b> — kinetic (dynamic) energy ½ρv²</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#a855f7"></span><span><b>Purple block</b> — gravity energy ρgh</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#475569"></span><span><b>Total bar height</b> — the constant total head, identical at point 1 and point 2</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#67e8f9"></span><span><b>Moving dots</b> — the flowing fluid; warmer colour means faster</span></div>
+        </div></div>
+      </details>
+      <details class="lz-drop">
+        <summary>Go deeper</summary>
+        <div class="body">
+          <p>Each term is an energy <em>per unit volume</em> (units of pressure, Pa). Between any two points on the same streamline, P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂.</p>
+          <p>It holds for flow that is steady, incompressible and inviscid (no friction). Continuity, A₁v₁ = A₂v₂, sets how much the speed term grows when the pipe narrows — explored in the next lesson.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <div class="lz-layout">
   <section class="lz-diagram">
     <svg id="lz-svg" viewBox="0 0 700 470" xmlns="http://www.w3.org/2000/svg"
@@ -40,8 +75,8 @@
       <div class="lz-meta"><span>Water · ρ = 1000 kg/m³ · area ratio 2 · height rise 2 m.</span></div>
     </div>
     <div class="panel"><p class="panel-title">What's happening</p><div class="lz-explain" id="lz-explain"></div></div>
-    <div class="panel"><p class="panel-title">Live values</p><div class="lz-readout" id="lz-readout"></div></div>
-    <div class="panel" style="padding:0"><p class="panel-title" style="padding:16px 16px 4px">Equations</p><div id="lz-eq-panel"></div></div>
+    <details class="panel" open><summary class="panel-title">Live values</summary><div class="lz-readout" id="lz-readout"></div></details>
+    <details class="panel"><summary class="panel-title">More equations</summary><div id="lz-eq-panel"></div></details>
   </aside>
 </div>
 

@@ -26,6 +26,41 @@
   <a class="lz-step" href="/viz/statics-spring"><span class="num">2</span> Spring & Oscillation</a>
 </nav>
 
+<section class="lz-teach">
+  <div class="lz-teach-card">
+    <div class="lz-teach-top">
+      <div class="lz-topic">
+        <div class="lz-topic-tag">Statics · Friction &amp; Equilibrium</div>
+        <h2>When does a block stay put on a slope?</h2>
+        <p>A block on an incline feels three forces: its weight pulling straight down, the surface pushing back (the <em>normal</em> force), and friction gripping along the slope. It stays still only while friction can cover the share of gravity that drags it down-slope.</p>
+      </div>
+      <div class="lz-eqmain">
+        <div class="cap">No-slip condition</div>
+        <div data-tex="mg\sin\theta \;\le\; \mu_s\,mg\cos\theta \;\Longrightarrow\; \tan\theta \le \mu_s"></div>
+      </div>
+    </div>
+    <div class="lz-drops">
+      <details class="lz-drop" open>
+        <summary>How it maps to the diagram</summary>
+        <div class="body"><div class="lz-legend">
+          <div class="lz-leg"><span class="sw" style="background:#ef4444"></span><span><b>Red arrow</b> — weight W = mg, straight down</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#3b82f6"></span><span><b>Blue arrow</b> — normal force N = mg cos θ</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#f59e0b"></span><span><b>Amber arrow</b> — friction f, pointing up the slope</span></div>
+          <div class="lz-leg"><span class="sw" style="background:#a855f7"></span><span><b>Purple arrow</b> — net force (appears only when it slides)</span></div>
+          <div class="lz-leg"><span class="sw dash" style="border-color:#fca5a5"></span><span><b>Dashed red</b> — weight split into mg sin θ (down-slope) and mg cos θ (into surface)</span></div>
+        </div></div>
+      </details>
+      <details class="lz-drop">
+        <summary>Go deeper</summary>
+        <div class="body">
+          <p>Resolve the forces along and perpendicular to the slope. The perpendicular balance gives N = mg cos θ. Along the slope, gravity pulls with mg sin θ while friction resists up to a maximum of μₛN.</p>
+          <p>Set mg sin θ = μₛ mg cos θ and the mass cancels: the block slips the instant <b>tan θ &gt; μₛ</b> — a heavier block does not slide sooner. Assumes a rigid block and dry (Coulomb) friction.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <div class="lz-layout">
   <section class="lz-diagram">
     <svg id="lz-svg" viewBox="0 0 620 470" xmlns="http://www.w3.org/2000/svg"
@@ -54,15 +89,15 @@
       <div class="lz-explain" id="lz-explain"></div>
     </div>
 
-    <div class="panel">
-      <p class="panel-title">Live values</p>
+    <details class="panel" open>
+      <summary class="panel-title">Live values</summary>
       <div class="lz-readout" id="lz-readout"></div>
-    </div>
+    </details>
 
-    <div class="panel" style="padding:0">
-      <p class="panel-title" style="padding:16px 16px 4px">Equations</p>
+    <details class="panel">
+      <summary class="panel-title">More equations</summary>
       <div id="lz-eq-panel"></div>
-    </div>
+    </details>
   </aside>
 </div>
 
