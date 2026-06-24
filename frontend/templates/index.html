@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block on Slope — Spring &amp; Friction</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <!-- KaTeX for equation rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Block on Slope — Spring &amp; Friction</h1>
+  <p>Drag the block to set compression, release to animate. Coordinate: <em>x</em> = spring compression (m), positive down-slope.</p>
+</header>
+
+<div class="layout">
+
+  <!-- ── Controls ────────────────────────────────────────── -->
+  <aside class="panel controls">
+    <p class="panel-title">Parameters</p>
+
+    <div class="slider-group">
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>m — mass</span>
+          <span id="slider-m-val">2.0 kg</span>
+        </div>
+        <input type="range" id="slider-m" min="0.5" max="10" step="0.1" value="2">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>θ — angle</span>
+          <span id="slider-theta-val">30 °</span>
+        </div>
+        <input type="range" id="slider-theta" min="5" max="75" step="1" value="30">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>k — stiffness</span>
+          <span id="slider-k-val">200 N/m</span>
+        </div>
+        <input type="range" id="slider-k" min="10" max="1000" step="10" value="200">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>b — damping</span>
+          <span id="slider-b-val">12.0 Ns/m</span>
+        </div>
+        <input type="range" id="slider-b" min="0" max="60" step="0.5" value="12">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>μₛ — static friction</span>
+          <span id="slider-mu-s-val">0.30 </span>
+        </div>
+        <input type="range" id="slider-mu-s" min="0" max="1.0" step="0.01" value="0.3">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>μₖ — kinetic friction</span>
+          <span id="slider-mu-k-val">0.25 </span>
+        </div>
+        <input type="range" id="slider-mu-k" min="0" max="1.0" step="0.01" value="0.25">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>g — gravity</span>
+          <span id="slider-g-val">9.81 m/s²</span>
+        </div>
+        <input type="range" id="slider-g" min="0.5" max="25" step="0.1" value="9.81">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>L₀ — spring natural length</span>
+          <span id="slider-spring-l-val">0.10 m</span>
+        </div>
+        <input type="range" id="slider-spring-l" min="0.02" max="0.30" step="0.01" value="0.10">
+      </div>
+
+    </div>
+
+    <hr class="divider">
+    <p class="panel-title">Display</p>
+
+    <label class="toggle-row">
+      <input type="checkbox" id="toggle-decompose">
+      Decompose weight components
+    </label>
+    <label class="toggle-row">
+      <input type="checkbox" id="toggle-net" checked>
+      Show net force arrow
+    </label>
+    <label class="toggle-row">
+      <input type="checkbox" id="toggle-stiction" checked>
+      Show stiction band
+    </label>
+
+    <hr class="divider">
+    <p class="panel-title">Actions</p>
+
+    <div class="btn-row">
+      <button class="primary" id="btn-release">▶ Release</button>
+      <button id="btn-reset">↺ Reset position</button>
+      <button id="btn-reset-params">Reset all parameters</button>
+    </div>
+  </aside>
+
+  <!-- ── Diagram ──────────────────────────────────────────── -->
+  <section class="panel diagram-panel">
+    <p class="panel-title">Free-body diagram
+      <span class="mode-badge mode-static" id="mode-badge">static</span>
+    </p>
+    <svg id="diagram-svg" viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg"
+         aria-label="Block on slope diagram"></svg>
+  </section>
+
+  <!-- ── Equations ────────────────────────────────────────── -->
+  <section class="panel equations-panel">
+    <p class="panel-title">Forces &amp; equations</p>
+    <div id="equations-panel"></div>
+  </section>
+
+  <!-- ── Time plot ────────────────────────────────────────── -->
+  <section class="panel plot-panel">
+    <p class="panel-title">Position vs time &nbsp;<span style="color:#888;font-size:0.7rem">(x in metres, dashed line = equilibrium)</span></p>
+    <canvas id="time-plot" width="700" height="160"></canvas>
+  </section>
+
+</div>
+
+<script src="/static/js/physics.js"></script>
+<script src="/static/js/diagram.js"></script>
+<script src="/static/js/plot.js"></script>
+<script src="/static/js/equations.js"></script>
+<script src="/static/js/app.js"></script>
+
+<script>
+  // Keep mode badge in sync
+  const _origRender = window.render;
+  // Patch render to update badge after each call
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge = document.getElementById('mode-badge');
+    const origRender = window.render;
+    window.render = function() {
+      origRender();
+      if (badge) {
+        badge.textContent = state.mode;
+        badge.className = 'mode-badge mode-' + state.mode;
+      }
+    };
+  });
+</script>
+
+</body>
+</html>
